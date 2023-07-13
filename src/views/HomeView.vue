@@ -1,40 +1,55 @@
 <template>
-  <div class="container">
-    <h1>Lista de juegos disponibles</h1>
-    <div class="cards-game">
-      <div class="card" style="width: 18rem;">
-        <img src="https://picsum.photos/id/684/600/400" class="card-img-top" alt="">
-        <div class="card-body">
-          <h5 class="card-title">NOMBRE</h5>
-        </div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">RATING</li>
-          <li class="list-group-item">RELEASED</li>
-          <li class="list-group-item">UPDATE</li>
-        </ul>
-        <div class="card-body">
-          <button class="btn btn-primary">Opinar</button>
-        </div>
-      </div>
-    </div>
-  </div>
+
+  <card-game :listadoJuegos="listadoJuegos"/>
+
 </template>
 
 <script>
-// @ is an alias to /src
-
+import axios from 'axios';
+import CardGame from '@/components/CardGame.vue';
 
 export default {
   name: 'HomeView',
-  components: {
+  // props: {},
+  data: function(){
+    return {
+      apiKey: '3cd208d9e60b4d808294edcce030509f',
+      listadoJuegos: [],
+    }
+  },
+  // computed: {},
+  methods: {
+    async obtenerDatos() {
+      try {
+        // let conectar = await axios.get(`https://api.rawg.io/api/games?key=${this.apiKey}`);
+        let conectar = await axios.get(`https://api.rawg.io/api/games?key=${this.apiKey}&dates=2023-01-01,2023-03-30&platforms=18,1,7`);
+        let respuesta = conectar.data.results;
 
+        respuesta.forEach(juego => {
+          this.listadoJuegos.push(juego);
+        });
+
+        console.log(this.listadoJuegos);
+
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  },
+  // watch: {},
+  components: {
+    'card-game': CardGame,
+  },
+  // mixins: [],
+  // filters: {},
+  // -- Lifecycle Methods
+  created() {
+    this.obtenerDatos();
   }
+  // -- End Lifecycle Methods
 }
 </script>
 
 <style scoped>
-  .cards-game {
-    display:grid;
-    grid-template-columns: 1fr 1fr 1fr;
-  }
+
 </style>
