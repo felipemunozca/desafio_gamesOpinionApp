@@ -29,7 +29,7 @@ export default {
           this.listadoJuegos.push(juego);
         });
 
-        console.log(this.listadoJuegos);
+        // console.log(this.listadoJuegos);
 
       } catch (error) {
         console.log(error);

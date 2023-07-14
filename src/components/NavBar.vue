@@ -1,8 +1,8 @@
 <template>
     <nav class="navbar-menu">
         <!-- <router-link to="/">Home</router-link> -->
-        <h3><i class="bi bi-controller"></i>Games Opinion</h3>
-        <router-link to="/" class="navbar-link"><i class="bi bi-house"></i>Home</router-link>
+        <h3><i class="fa-solid fa-headset"></i>Games Opinion</h3>
+        <router-link to="/" class="navbar-link"><i class="fa-solid fa-house-chimney"></i>Home</router-link>
     </nav>
     <!-- <nav class="navbar navbar-expand-lg bg-dark border-bottom border-bottom-dark" data-bs-theme="dark">
         <div class="container-fluid">
@@ -54,6 +54,7 @@ export default {
     }
     .navbar-menu i {
         margin-right: 5px;
+        color: #ffffff;
     }
     .navbar-link {
         color: white;

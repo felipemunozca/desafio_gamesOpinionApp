@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div class="opinion-form mt-5">
-            <h2 class="text-center">Escribe tu opinion para el juego: {{name}}</h2>
+            <h2 class="text-center">Escribe tu opinion para el juego: {{nombreJuego}}</h2>
             <form class="mt-3">
                 <div class="mb-3">
                     <label for="nombre" class="form-label">Nombre</label>
@@ -15,6 +15,7 @@
                 <button v-else @click.prevent="actualizarOpinion" type="submit" class="btn btn-info">Actualizar</button>
             </form>
         </div>
+        
         <div class="opinion-list mt-5">
             <h2 class="text-center">A continuación podrás ver tu opinión</h2>
             <div v-if="listadoOpiniones.length == 0">
@@ -66,7 +67,7 @@ export default {
         }
     },
     computed: {
-        name() {
+        nombreJuego() {
             return this.$route.params.name;
         }
     },

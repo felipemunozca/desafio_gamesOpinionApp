@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 
 import OpinionesView from '@/views/OpinionesView.vue';
+import AdministracionView from '@/views/AdministracionView.vue';
 
 Vue.use(VueRouter)
 
@@ -16,6 +17,13 @@ const routes = [
     path: '/opiniones/:name',
     name: 'opiniones',
     component: OpinionesView,
+  },
+  {
+    path: '/administracion/:name',
+    name: 'administracion',
+    component: AdministracionView,
+    //IMPORTANTE
+    props: true,
   },
   {
     path: '/about',

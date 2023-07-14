@@ -15,6 +15,7 @@
                     </ul>
                     <div class="card-body">
                         <button @click="redireccionar(juego.name)" class="btn btn-primary">Opinar</button>
+                        <i @click="redireccionarAdmin(juego.name)" class="fa-solid fa-heart"></i>
                     </div>
                 </div>
             </div>
@@ -38,7 +39,12 @@ export default {
     methods: {
         redireccionar(name) {
             this.$router.push(`/opiniones/${name}`);
-        }
+        },
+        redireccionarAdmin(name) {
+            this.$router.push({name: 'administracion', params: {name}})
+            //this.$router.push(`/administracion/${name}`);
+            //this.$router.push({name: 'administracion', params: {id: name}});
+        },
     },
     // watch: {},
     // components: {},
@@ -56,6 +62,13 @@ export default {
         width: 100%;
         gap: 15px 30px;
         /* margin: 30px auto 0; */
+    }
+
+    .fa-heart {
+        color: #ff0000;
+        font-size: 18px;
+        margin-left: 12px;
+        cursor: pointer;
     }
 
     @media (max-width: 576px) { 
