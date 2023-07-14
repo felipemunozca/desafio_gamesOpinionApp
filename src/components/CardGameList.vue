@@ -14,7 +14,7 @@
                         <li class="list-group-item">Update: {{juego.updated}}</li>
                     </ul>
                     <div class="card-body">
-                        <button class="btn btn-primary">Opinar</button>
+                        <button @click="redireccionar(juego.name)" class="btn btn-primary">Opinar</button>
                     </div>
                 </div>
             </div>
@@ -35,7 +35,11 @@ export default {
         return {}
     },
     // computed: {},
-    // methods: {}
+    methods: {
+        redireccionar(name) {
+            this.$router.push(`/opiniones/${name}`);
+        }
+    },
     // watch: {},
     // components: {},
     // mixins: [],

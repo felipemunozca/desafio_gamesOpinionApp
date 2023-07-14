@@ -6,7 +6,7 @@
 
 <script>
 import axios from 'axios';
-import CardGame from '@/components/CardGame.vue';
+import CardGameList from '@/components/CardGameList.vue';
 
 export default {
   name: 'HomeView',
@@ -38,7 +38,7 @@ export default {
   },
   // watch: {},
   components: {
-    'card-game': CardGame,
+    'card-game': CardGameList,
   },
   // mixins: [],
   // filters: {},
