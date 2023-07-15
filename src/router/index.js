@@ -3,8 +3,8 @@ import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 
 import OpinionesView from '@/views/OpinionesView.vue';
-import AdministracionView from '@/views/AdministracionView.vue';
-import NotFoundView from '@/views/NotFoundView.vue';
+//import AdministracionView from '@/views/AdministracionView.vue';
+//import NotFoundView from '@/views/NotFoundView.vue';
 
 Vue.use(VueRouter)
 
@@ -22,9 +22,10 @@ const routes = [
   {
     path: '/administracion/:name',
     name: 'administracion',
-    component: AdministracionView,
+    //component: AdministracionView,
     //IMPORTANTE
     props: true,
+    component: () => import(/* webpackChunkName: "administracion" */ '../views/AdministracionView.vue'),
   },
   {
     path: '/about',
@@ -37,7 +38,8 @@ const routes = [
   {
     path: '*',
     name: 'notFound',
-    component: NotFoundView,
+    //component: NotFoundView,
+    component: () => import(/* webpackChunkName: "notFound" */ '../views/NotFoundView.vue'),
   },
 ]
 
