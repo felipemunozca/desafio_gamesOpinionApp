@@ -4,6 +4,7 @@ import HomeView from '../views/HomeView.vue'
 
 import OpinionesView from '@/views/OpinionesView.vue';
 import AdministracionView from '@/views/AdministracionView.vue';
+import NotFoundView from '@/views/NotFoundView.vue';
 
 Vue.use(VueRouter)
 
@@ -32,7 +33,12 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-  }
+  },
+  {
+    path: '*',
+    name: 'notFound',
+    component: NotFoundView,
+  },
 ]
 
 const router = new VueRouter({
