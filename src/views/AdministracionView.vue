@@ -33,7 +33,7 @@
                         </div>
                     </div>
 
-                    <card-group-record></card-group-record>
+                    <card-group-record :avance="avance" :trofeos="trofeos" :recompensas="recompensas"></card-group-record>
                 </div>
             </div>
         </div>
@@ -51,13 +51,16 @@ export default {
             nombre: "",
             apellido: "",
             monedas: 0,
+            avance: 0,
+            trofeos: 0,
+            recompensas: 0,
         }
     },
     computed: {
         nombreCompleto() {
             return `${this.nombre} ${this.apellido}`;
         },
-        colorBarra(){
+        colorBarra() {
             return {
                 'bg-success': this.monedas <= 20,
                 'bg-warning': this.monedas > 20,
@@ -88,6 +91,11 @@ export default {
             } else {
                 this.monedas = (this.monedas + parseInt(entrada));
             }
+        },
+        obtenerPuntajes() {
+            this.avance = 17;
+            this.trofeos = 166;
+            this.recompensas = 200;
         }
     },
     // watch: {},
@@ -97,6 +105,9 @@ export default {
     // mixins: [],
     // filters: {},
     // -- Lifecycle Methods
+    created() {
+        return this.obtenerPuntajes();
+    }
     // -- End Lifecycle Methods
 }
 </script>

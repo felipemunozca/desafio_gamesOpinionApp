@@ -55,7 +55,9 @@ export default {
     name: 'administracion-view',
     /**
      * Se utiliza props para recibir el nombre del juego. Ya que es un valor único, se puede declarar dentro de paréntesis
-     *      cuadrados (cabe señalar que no es un arreglo)
+     *      cuadrados (cabe señalar que no es un arreglo).
+     * IMPORTANTE: para poder recibir este props, se debe agregar la propiedad "props: true" en la ruta de esta vista en el 
+     *      archivo router/index.js
      * Este mismo proceso se puede hacer dentro de "computed" creando un método y retornando el parámetro name.
      */
     props: ['name'],
@@ -64,6 +66,9 @@ export default {
             nombre: "",
             apellido: "",
             monedas: 0,
+            avance: 0,
+            trofeos: 0,
+            recompensas: 0,
         }
     },
     computed: {
@@ -109,6 +114,15 @@ export default {
             } else {
                 this.monedas = (this.monedas + parseInt(entrada));
             }
+        },
+        /**
+         * Se crea un método que en teoría debería obtener los puntales del usuario de una API, pero ya que no existen
+         *      se dejan como valores pre establecidos, y que en un futuro se podrían cargar.
+         */
+        obtenerPuntajes() {
+            this.avance = 17;
+            this.trofeos = 166;
+            this.recompensas = 200;
         }
     },
     // watch: {},
@@ -118,6 +132,12 @@ export default {
     // mixins: [],
     // filters: {},
     // -- Lifecycle Methods
+    /**
+     * Se crea un ciclo de vida para el método obtenerPuntajes() para que se ejecute al cargar la vista.
+     */
+    created() {
+        return this.obtenerPuntajes();
+    }
     // -- End Lifecycle Methods
 }
 </script>

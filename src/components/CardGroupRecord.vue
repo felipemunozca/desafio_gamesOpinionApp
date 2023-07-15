@@ -4,21 +4,21 @@
             <div class="card-body">
                 <h5 class="card-title">% de finalización del juego</h5>
                 <hr>
-                <p class="card-text">17% <i class="fa-regular fa-star-half"></i></p>
+                <p class="card-text">{{avance}}% <i class="fa-regular fa-star-half"></i></p>
             </div>
         </div>
         <div class="card bg-success text-white">
             <div class="card-body">
                 <h5 class="card-title">Logros en el juego</h5>
                 <hr>
-                <p class="card-text">166 <i class="fa-solid fa-trophy"></i></p>
+                <p class="card-text">{{trofeos}} <i class="fa-solid fa-trophy"></i></p>
             </div>
         </div>
         <div class="card bg-info">
             <div class="card-body">
                 <h5 class="card-title">Recompensas</h5>
                 <hr>
-                <p class="card-text">200 <i class="fa-solid fa-award"></i></p>
+                <p class="card-text">{{recompensas}} <i class="fa-solid fa-award"></i></p>
             </div>
         </div>
     </div>
@@ -27,9 +27,26 @@
 <script>
 export default {
     name: 'card-group-record-comp',
-    // props: {},
+    props: {
+        avance: {
+            type: Number,
+            required: true,
+        },
+        trofeos: {
+            type: Number,
+            required: true,
+        },
+        recompensas: {
+            type: Number,
+            required: true,
+        }
+    },
     data: function(){
-        return {}
+        return {
+            // avance: 17,
+            // trofeos: 166,
+            // recompensas: 200,
+        }
     },
     // computed: {},
     // methods: {}
