@@ -21,16 +21,13 @@ export default {
   methods: {
     async obtenerDatos() {
       try {
-        // let conectar = await axios.get(`https://api.rawg.io/api/games?key=${this.apiKey}`);
         let conectar = await axios.get(`https://api.rawg.io/api/games?key=${this.apiKey}&dates=2023-01-01,2023-03-30&platforms=18,1,7`);
         let respuesta = conectar.data.results;
 
         respuesta.forEach(juego => {
           this.listadoJuegos.push(juego);
         });
-
-        // console.log(this.listadoJuegos);
-
+        
       } catch (error) {
         console.log(error);
       }

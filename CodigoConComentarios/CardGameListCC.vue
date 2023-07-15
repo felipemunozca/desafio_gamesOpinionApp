@@ -27,6 +27,11 @@
 export default {
     name: 'card-game-comp',
     props: {
+        /**
+         * Dentro de props se define un arreglo, que se llenara con la información que se esta recibiendo desde "HomeView" 
+         * El nombre del arreglo puede ser igual al que se declara en HomeView o puede ser otro.
+         * Ademas se debe declarar que "tipo" tiene sera el dato y si es requerido o no. 
+         */
         listadoJuegos: {
             type: Array,
             required: true,
@@ -37,6 +42,15 @@ export default {
     },
     // computed: {},
     methods: {
+        /**
+         * Se crean dos métodos para redireccionar al usuario a diferentes vistas dependiendo del botón que se presione.
+         * Se debe utilizar la propiedad $router (palabra reservada de Vue) junto al método push() y dentro estará la ruta a mostrar.
+         * El primer método levanta la vista opiniones, ademas se envía el nombre como propiedad para ser utilizado dentro de
+         *      OpinionesView.vue
+         * El segundo método levanta la vista administración, funciona de la misma forma que la primera ruta, pero en esta se definen
+         *      atributos, como el name de la ruta y el parámetro name que sera el nombre del juego que se envía a la vista 
+         *      AdministracionView.vue
+         */
         redireccionar(name) {
             this.$router.push(`/opiniones/${name}`);
         },
@@ -60,6 +74,7 @@ export default {
         grid-template-columns: 1fr 1fr 1fr;
         width: 100%;
         gap: 15px 30px;
+        /* margin: 30px auto 0; */
     }
 
     .fa-heart {

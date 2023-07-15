@@ -14,6 +14,7 @@
                 <div class="col-9 pt-3 ps-5">
                     <h2>Resumen de tu cuenta</h2>
                     <p>Le diste me gusta al juego <strong>{{name}}</strong></p>
+
                     <div class="card">
                         <div class="card-body">
                             <p class="card-text">¿Deseas comprar coins para este juego?</p>
@@ -22,6 +23,13 @@
                             </button>
                             <hr>
                             <h5 class="card-title">Cantidad de coins comprados</h5>
+                            <!--  
+                                Se utilizan las directivas v-binding (:) para asignar dos parámetros.
+                                El primero sera :style para poder definir el tamaño de la barra de progreso, se toma como base el
+                                    valor que tendrá monedas, y se multiplica por 2. (Ya que el numero máximo sera 50 y se debe
+                                    llegar al 100% del ancho, cada valor de moneda se medirá como el doble.)
+                                El segundo sera :class para asignar una clase que permita cambiar el color de la barra de progreso.
+                            -->
                             <div class="progress">
                                 <div class="progress-bar" role="progressbar" :style="{'width': monedas * 2 +'%'}" :class="colorBarra">
                                     $ {{monedas}}
@@ -45,6 +53,11 @@ import CardGroupRecord from '@/components/CardGroupRecord.vue';
 
 export default {
     name: 'administracion-view',
+    /**
+     * Se utiliza props para recibir el nombre del juego. Ya que es un valor único, se puede declarar dentro de paréntesis
+     *      cuadrados (cabe señalar que no es un arreglo)
+     * Este mismo proceso se puede hacer dentro de "computed" creando un método y retornando el parámetro name.
+     */
     props: ['name'],
     data: function(){
         return {
@@ -57,8 +70,16 @@ export default {
         nombreCompleto() {
             return `${this.nombre} ${this.apellido}`;
         },
+
+        // nombreJuego() {
+        //     return this.$route.params.name;
+        // },
+
+        /**
+         * Se utiliza la reactividad de Vue para ir cambiando el color de la barra dependiendo del valor que tenga monedas.
+         */
         colorBarra(){
-            return {
+            return{
                 'bg-success': this.monedas <= 20,
                 'bg-warning': this.monedas > 20,
                 'bg-danger': this.monedas >= 31,
